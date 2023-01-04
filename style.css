@@ -1,0 +1,171 @@
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+  
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+  
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+  
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+:root {
+	--background-color-very-dark: #181818;
+	--background-color-dark: #202123;
+	--background-color-light: #303135;
+	--border-color-gray: #434343;
+	--other-color: #303135;
+}
+
+* {
+    box-sizing: border-box;
+	font-family: 'Nunito', sans-serif;
+	color: white;
+}
+
+body, html {
+    margin: 0;
+	padding: 0;
+	height: 100%;
+    width: 100%;
+	background-color: var(--background-color-dark);
+}
+
+input, textarea {
+	outline: 0;
+	appearance: none;
+}
+
+textarea:focus, input:focus{
+    outline: 0;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 60px 80px 1fr 60px;
+    height: 100%;
+}
+
+.header, .footer, .search {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.header {
+    grid-column: 1 / -1;
+	font-size: 1.3rem;
+}
+
+.header, .footer {
+	background-color: var(--background-color-light);
+}
+
+button {
+	padding: 5px 10px;
+	background-color: var(--background-color-very-dark);
+	border: 1px solid var(--border-color-gray);
+	border-radius: 5px;
+	font-size: 1.1rem;
+
+	position: absolute;
+	right: 10px;
+}
+
+button:hover {
+	cursor: pointer;
+	border: 1px solid #909090;
+}
+
+.search {
+    grid-column: 1;
+	
+	justify-content: start;
+	padding: 20px;
+}
+
+.current-weather {
+	grid-column: 1;
+}
+
+.forecast {
+	grid-column: 2;
+	border-left: 1px solid var(--border-color-gray);
+}
+
+.popular-cities {
+    grid-column: 2;
+
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.popular-city {
+	border-left: 1px solid var(--border-color-gray);
+}
+
+.search-result {
+    grid-column: 1 / -1;
+
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-rows: 1fr;
+
+	border-top: 1px solid var(--border-color-gray);
+}
+
+.footer {
+    grid-column: 1 / -1;
+	gap: 10px;
+}
+
+#city {
+	border: 1px solid var(--border-color-gray);
+	width: 100%;
+	padding: 10px 50px 10px 10px;
+	font-size: 1.1rem;
+	background-color: var(--background-color-dark);
+	border-radius: 8px;
+}
+
+input:focus {
+	background-color: #282828;
+}
+
+#search-icon {
+	position: relative;
+	right: 30px;
+}
+
+.search-result .content {
+	grid-column: 1 / -1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2.5rem;
+	font-style: italic;
+	color: gray;
+
+	display: none;
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather API Demo</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -14,17 +14,55 @@
     <div class="content">
         <div class="header">
             <span>Weather API Demo</span>
-            <button type="button">Units: &#8451</button>
+            <button type="button">Units: &#8457</button>
         </div>
-        <div class="search">
-            <input type="text" name="city" id="city" placeholder="Search">
-            <span class="material-icons md-24" id="search-icon">search</span>
-        </div>
-        <div class="popular-cities">
-            <div class="popular-city"></div>
-            <div class="popular-city"></div>
-            <div class="popular-city"></div>
-            <div class="popular-city"></div>
+        <div class="sub-header">
+            <div class="search">
+                <input type="text" name="city" id="city" placeholder="Search">
+                <span class="material-icons md-24" id="search-icon">search</span>
+            </div>
+            <div class="popular-cities">
+                <div class="popular-city">
+                    <div class="weather-summary">
+                        <img src="./SVG/wind.svg" alt=""/>
+                        <span class="temperature">32&#8457</span>
+                    </div>
+                    <div class="weather-description">
+                        <div class="name">San Diego</div>
+                        <div class="conditions">Sunny</div>
+                    </div>
+                </div>
+                <div class="popular-city">
+                    <div class="weather-summary">
+                        <img src="./SVG/cloud-snow.svg" alt=""/>
+                        <span class="temperature">32&#8457</span>
+                    </div>
+                    <div class="weather-description">
+                        <div class="name">New York</div>
+                        <div class="conditions">Sunny</div>
+                    </div>
+                </div>
+                <div class="popular-city">
+                    <div class="weather-summary">
+                        <img src="./SVG/cloud-rain.svg" alt=""/>
+                        <span class="temperature">32&#8457</span>
+                    </div>
+                    <div class="weather-description">
+                        <div class="name">Taipei</div>
+                        <div class="conditions">Sunny</div>
+                    </div>
+                </div>
+                <div class="popular-city">
+                    <div class="weather-summary">
+                        <img src="./SVG/sun.svg" alt=""/>
+                        <span class="temperature">32&#8457</span>
+                    </div>
+                    <div class="weather-description">
+                        <div class="name">London</div>
+                        <div class="conditions">Sunny</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="search-result">
             <div class="content">

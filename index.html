@@ -14,55 +14,14 @@
     <div class="content">
         <div class="header">
             <span>OpenWeatherMap API Demo</span>
-            <button type="button">Units: &#8457</button>
+            <button type="button" id="convert-btn">Units: &#8457</button>
         </div>
         <div class="sub-header">
             <div class="search">
                 <input type="text" name="city" id="city" placeholder="Search">
                 <span class="material-icons md-24" id="search-icon">search</span>
             </div>
-            <div class="popular-cities">
-                <div class="popular-city">
-                    <div class="weather-summary">
-                        <img src="./SVG/wind.svg" alt=""/>
-                        <span class="temperature">32&#8457</span>
-                    </div>
-                    <div class="weather-description">
-                        <div class="name">San Diego</div>
-                        <div class="conditions">Sunny</div>
-                    </div>
-                </div>
-                <div class="popular-city">
-                    <div class="weather-summary">
-                        <img src="./SVG/cloud-snow.svg" alt=""/>
-                        <span class="temperature">32&#8457</span>
-                    </div>
-                    <div class="weather-description">
-                        <div class="name">New York</div>
-                        <div class="conditions">Sunny</div>
-                    </div>
-                </div>
-                <div class="popular-city">
-                    <div class="weather-summary">
-                        <img src="./SVG/cloud-rain.svg" alt=""/>
-                        <span class="temperature">32&#8457</span>
-                    </div>
-                    <div class="weather-description">
-                        <div class="name">Taipei</div>
-                        <div class="conditions">Sunny</div>
-                    </div>
-                </div>
-                <div class="popular-city">
-                    <div class="weather-summary">
-                        <img src="./SVG/sun.svg" alt=""/>
-                        <span class="temperature">32&#8457</span>
-                    </div>
-                    <div class="weather-description">
-                        <div class="name">London</div>
-                        <div class="conditions">Sunny</div>
-                    </div>
-                </div>
-            </div>
+            <div class="popular-cities"></div>
         </div>
         <div class="search-result">
             <div class="placeholder">

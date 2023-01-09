@@ -128,7 +128,7 @@ button:hover {
 }
 
 .popular-city:not(:first-child) {
-	border-left: 1px solid var(--border-color-gray);
+	/* border-left: 1px solid var(--border-color-gray); */
 }
 
 .weather-summary {
@@ -170,7 +170,7 @@ button:hover {
 }
 
 .current-weather, .forecast {
-	padding: 40px 50px;
+	padding: 60px 50px;
 }
 
 .current-weather {
@@ -184,7 +184,7 @@ button:hover {
 
 .forecast {
 	grid-column: 2;
-	border-left: 1px solid var(--border-color-gray);
+	/* border-left: 1px solid var(--border-color-gray); */
 }
 
 .footer {
@@ -387,6 +387,10 @@ input:focus {
 	width: 80px;
 }
 
+.img {
+	font-size: 2em;
+}
+
 @media only screen and (min-width: 900px) {
 
 	.content {
@@ -401,11 +405,11 @@ input:focus {
 	.search {
 		max-width: 615px;
 		flex-grow: 1;
-		border-right: 1px solid var(--border-color-gray);
+		/* border-right: 1px solid var(--border-color-gray); */
 	}
 
 	.forecast .details {
-		justify-content: space-between;
+		justify-content: space-evenly;
 		flex-direction: row;
 	}
 	

@@ -14,7 +14,7 @@ convertUnitBtn.addEventListener('click', () => {
         convertUnitBtn.innerHTML = `Units: &#8457`
     }
     loadPopularCities();
-    loadSearchResult();
+    loadSearchResult(); // how to reload
 })
 
 let searchInput = document.getElementById('city')
@@ -60,6 +60,13 @@ async function loadPopularCities() {
 
     let popularCities = document.querySelector('.popular-cities');
     popularCities.replaceChildren(...output);  
+
+    document.querySelectorAll('.popular-city').forEach(city => {
+        city.addEventListener('click', (e) => {
+            let city = e.currentTarget.querySelector('.name').textContent
+            loadSearchResult(city)
+        })
+    })
 }
 
 async function createCard(city) {

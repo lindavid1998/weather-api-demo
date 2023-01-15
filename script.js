@@ -13,8 +13,9 @@ convertUnitBtn.addEventListener('click', () => {
     } else {
         convertUnitBtn.innerHTML = `Units: &#8457`
     }
+
     loadPopularCities();
-    loadSearchResult(); // how to reload
+    loadSearchResult(document.querySelector('.city-name').textContent); 
 })
 
 let searchInput = document.getElementById('city')
@@ -29,7 +30,7 @@ searchInput.addEventListener('keydown', (e) => {
     }
 })
 
-async function showWeather(city) {
+async function getWeather(city) {
     try {
         let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}`, {mode: 'cors'})
         let data = await response.json();
@@ -67,6 +68,7 @@ async function loadPopularCities() {
             loadSearchResult(city)
         })
     })
+    
 }
 
 async function createCard(city) {
@@ -80,13 +82,13 @@ async function createCard(city) {
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}`,
             { mode: 'cors' }
         )
-        let data = await response.json();
 
+        let data = await response.json();
         let temp = convertToKelvin(data.main.temp);
         let weather = data.weather[0];
         let time = new Date((data.dt + data.timezone) * 1000);
 
-        let card = createDiv('popular-city')
+        let card = createDiv('popular-city');
         appendSummary(card, weather.id, temp, time);
         appendDescription(card, city, weather.main);
 
@@ -161,33 +163,32 @@ function loadWeatherIcon(img, id, time) {
     id = String(id);
     switch (true) {
         case (id == '800'):
-            img.src = `./SVG/${icons.clear}.svg`
+            img.src = `./icons/${icons.clear}.svg`
             img.alt = 'Icon for clear conditions';
             break;
         case (id == '801'):
-            img.src = `./SVG/${icons.partlyClear}.svg`
+            img.src = `./icons/${icons.partlyClear}.svg`
             img.alt = 'Icon for partly clear conditions';
             break;
         case (id.startsWith('2') || id.startsWith('3') || id.startsWith('5')):
-            img.src = `./SVG/${icons.rain}.svg`
+            img.src = `./icons/${icons.rain}.svg`
             img.alt = 'Icon for rainy conditions';
             break;
         case (id.startsWith('6')):
-            img.src = `./SVG/${icons.snow}.svg`
+            img.src = `./icons/${icons.snow}.svg`
             img.alt = 'Icon for snowy conditions';
             break; 
         case (id.startsWith('80')):
-            img.src = `./SVG/${icons.clouds}.svg`
+            img.src = `./icons/${icons.clouds}.svg`
             img.alt = 'Icon for cloudy conditions';
             break;
         default:
-            img.style.display = 'none'
+            img.src = `./icons/question-mark.png`
             img.alt = 'Missing icon';
     }
 }
 
 async function loadSearchResult(city) {
-    
     try {
         // load weather
         let weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}`, {mode: 'cors'})
@@ -200,7 +201,6 @@ async function loadSearchResult(city) {
 
         let forecast = groupForecastByDay(forecastData, timezone);
         let highLows = getHighLow(forecast);
-        // console.log(highLows)
 
         // populate city name
         const cityName = document.querySelector('.location .city-name');
@@ -211,9 +211,7 @@ async function loadSearchResult(city) {
         country.textContent = weatherData.sys.country;
 
         // toggle search result view
-        document.querySelector('.placeholder').style.display = 'none';
-        document.querySelector('.current-weather').style.display = 'flex';
-        document.querySelector('.forecast').style.display = 'flex';
+        showSearchResult()
 
         // load sections
         loadSectionOne(weatherData)
@@ -222,9 +220,22 @@ async function loadSearchResult(city) {
         load4DayForecast(forecast, timezone, highLows)
 
     } catch (error) {
+        hideSearchResult()
         document.querySelector('.placeholder').textContent = 
             'No results. Please check that a valid location was entered.'
     }
+}
+
+function hideSearchResult() {
+    document.querySelector('.placeholder').style.display = 'flex'
+    document.querySelector('.current-weather').style.display = 'none';
+    document.querySelector('.forecast').style.display = 'none';
+}
+
+function showSearchResult() {
+    document.querySelector('.placeholder').style.display = 'none'
+    document.querySelector('.current-weather').style.display = 'flex';
+    document.querySelector('.forecast').style.display = 'flex';
 }
 
 function loadSectionOne(data) {
@@ -261,16 +272,17 @@ function loadSectionTwo(highLows) {
 }
 
 function loadSectionThree(data) {
-    // load windspeed
-    const windSpd =  document.querySelector('#wind .value')
+    // load wind
+    const wind =  document.querySelector('#wind .value')
+    let direction = convertWindDegToDirection(data.wind.deg);
+    let speed;
     if (useMetric) {
-        windSpd.innerHTML =
-            `${data.wind.speed} m/s, ${data.wind.deg}&deg`
+        speed = `${data.wind.speed} m/s`;
     } else {
-        windSpd.innerHTML =
-            `${Math.round(2.237 * data.wind.speed)} mph, ${data.wind.deg}&deg`
+        speed = `${Math.round(2.237 * data.wind.speed)} mph`;
     }
-
+    wind.innerHTML = `${speed}, ${direction}`
+  
     // load humidity
     const humidity =  document.querySelector('#humidity .value');
     humidity.innerHTML = `${data.main.humidity}%`
@@ -363,7 +375,6 @@ function filterForecast(input, timezone) {
             let now = new Date(Date.now());
 
             let isValid = (hour > 10) && (hour < 15) && (now.getDate() != day);
-
             return isValid
         })
 
@@ -432,4 +443,28 @@ function getHighLow(forecast) {
     }
 
     return output
+}
+
+function convertWindDegToDirection(deg) {
+    // input: deg -> Number
+    // output: string
+
+    switch (true) {
+        case (deg >= 30 && deg < 60):
+            return 'NE'
+        case (deg >= 60 && deg < 120):
+            return 'E'
+        case (deg >= 120 && deg < 150):
+            return 'SE'
+        case (deg >= 150 && deg < 210):
+            return 'S'
+        case (deg >= 210 && deg < 240):
+            return 'SW'
+        case (deg >= 240 && deg < 300):
+            return 'W'
+        case (deg >= 300 && deg < 330):
+            return 'NW'
+        default:
+            return 'N'
+    }
 }

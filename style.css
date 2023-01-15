@@ -1,42 +1,11 @@
-.material-icons {
-	font-family: 'Material Icons';
-	font-weight: normal;
-	font-style: normal;
-	font-size: 24px;  /* Preferred icon size */
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-  
-	/* Support for all WebKit browsers. */
-	-webkit-font-smoothing: antialiased;
-	/* Support for Safari and Chrome. */
-	text-rendering: optimizeLegibility;
-  
-	/* Support for Firefox. */
-	-moz-osx-font-smoothing: grayscale;
-  
-	/* Support for IE. */
-	font-feature-settings: 'liga';
-}
-
-/* Rules for sizing the icon. */
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
-
 :root {
-	--background-color-very-dark: #181818;
-	--background-color-dark: #202123;
-	--background-color-light: #303135;
+	--background-color-very-dark: #0e0d13;
+	--background-color-dark: #1c1b25;
+	--background-color-light: #484c5d;
 	--border-color-gray: #434343;
-	--other-color: #303135;
-	--active-field: #909090;
-	color: white;
+	--active-field: #8a8a8a;
+	--light-gray: rgb(194, 194, 194);
+	color: rgb(255, 255, 255);
 }
 
 * {
@@ -74,10 +43,10 @@ input, textarea {
 
 .header {
 	font-size: 1.3rem;
+	background-color: var(--background-color-very-dark);
 }
 
 .header, .footer {
-	background-color: var(--background-color-light);
 	min-height: 60px;
 }
 
@@ -88,12 +57,12 @@ input, textarea {
 
 button {
 	padding: 5px 10px;
-	background-color: var(--background-color-very-dark);
+	background-color: var(--background-color-dark);
 	border: 1px solid var(--border-color-gray);
 	border-radius: 5px;
 	font-size: 0.9rem;
 	position: absolute;
-	left: 10px;
+	left: 20px;
 	color: white;
 }
 
@@ -131,8 +100,8 @@ button:hover {
 	gap: 15px;
 }
 
-.popular-city:not(:first-child) {
-	/* border-left: 1px solid var(--border-color-gray); */
+.conditions {
+	color: var(--light-gray);
 }
 
 .weather-summary {
@@ -180,17 +149,16 @@ button:hover {
 
 .current-weather {
 	grid-column: 1;
-	/* display: flex; */
 	flex-direction: column;
 	gap: 25px;
 	font-size: 1.4rem;
 	min-width: 270px;
+	width: 350px;
 	white-space: nowrap;
 }
 
 .forecast {
 	grid-column: 2;
-	/* border-left: 1px solid var(--border-color-gray); */
 }
 
 .footer {
@@ -228,6 +196,7 @@ input:focus {
 
 .city-name {
 	font-size: 1.8rem;
+	color: rgb(0, 183, 255);
 }
 
 .country {
@@ -287,6 +256,7 @@ input:focus {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	color: var(--light-gray);
 }
 
 .high-low {
@@ -330,7 +300,6 @@ input:focus {
 }
 
 .popular-city .name {
-	color: rgb(0, 123, 255);
 	transition: all 0.5s;
 }	
 
@@ -342,10 +311,10 @@ input:focus {
 
 .title {
 	font-size: 1.4rem;
+	color: var(--light-gray);
 }
 
 .forecast {
-	/* display: none; */
 	flex-direction: column;
 	gap: 30px;
 }
@@ -363,6 +332,7 @@ input:focus {
 	display: flex;
 	flex-direction: row;
 	border: 1px solid var(--border-color-gray);
+	border-radius: 8px;
 	flex-grow: 1;
 	height: 110px;
 	min-width: 470px;
@@ -403,7 +373,7 @@ input:focus {
 	font-size: 2em;
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1000px) {
 
 	.content {
 		height: 100%;
@@ -415,13 +385,12 @@ input:focus {
 	}
 
 	.search {
-		max-width: 615px;
+		max-width: 700px;
 		flex-grow: 1;
-		/* border-right: 1px solid var(--border-color-gray); */
 	}
 
 	.forecast .details {
-		justify-content: space-evenly;
+		justify-content: space-around;
 		flex-direction: row;
 	}
 	

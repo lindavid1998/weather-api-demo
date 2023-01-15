@@ -68,7 +68,7 @@ async function loadPopularCities() {
             loadSearchResult(city)
         })
     })
-    
+
 }
 
 async function createCard(city) {
@@ -363,18 +363,16 @@ function groupForecastByDay(data, timezone) {
 
 function filterForecast(input, timezone) {
     // filters grouped forecast such that only a single timepoint is paired to each day
-
+    let output = {};
     let dates = Object.keys(input);
-    
-    let output = {}
     dates.forEach(day => {
         let filtered = input[day].filter(timepoint => {
             let shiftedDt = new Date((timepoint.dt + timezone) * 1000);
             let day = shiftedDt.getUTCDate();
             let hour = shiftedDt.getUTCHours();
-            let now = new Date(Date.now());
+            let now = new Date(Date.now() + timezone * 1000);
 
-            let isValid = (hour > 10) && (hour < 15) && (now.getDate() != day);
+            let isValid = (hour > 10) && (hour < 15) && (now.getUTCDate() != day);
             return isValid
         })
 

@@ -1,8 +1,5 @@
 {
-    "cSpell.ignoreWords": [
-        "timepoints"
-    ],
-    "cSpell.words": [
-        "timepoint"
-    ]
+  "cSpell.ignoreWords": ["timepoints"],
+  "cSpell.words": ["timepoint"],
+  "editor.formatOnSave": true,
 }

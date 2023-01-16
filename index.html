@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenWeatherMap API Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <div class="header">
+            <span>OpenWeatherMap API Demo</span>
+            <button type="button" id="convert-btn">Units: &#8457</button>
+        </div>
+        <div class="sub-header">
+            <div class="search">
+                <input type="text" name="city" id="city" placeholder="Search">
+                <span class="material-icons md-24" id="search-icon">search</span>
+            </div>
+            <div class="popular-cities"></div>
+        </div>
+        <div class="search-result">
+            <div class="placeholder">
+                Search for a city or click any of the locations above for a detailed forecast
+            </div>
+            <div class="current-weather">
+                <div class="location">
+                    <div class="city-name"></div>
+                    <div class="country"></div>
+                </div>
+
+                <div class="title">Current conditions</div>
+                
+                <div class="section-one">
+                    <div class="weather-icon">
+                        <img src="" alt=""/>
+                    </div>
+                    <div class="temperature"></div>
+                    <div class="weather"></div>
+                    <div class="feels-like"></div>
+                </div>
+                <div class="section-two">
+                    <div class="high-low">
+                        <div class="high">
+                            <span>H:</span>
+                            <div class="value"></div>
+                        </div>
+                        <div class="low">
+                            <span>L:</span>
+                            <div class="value"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-three">
+                    <div class="detail" id="wind">
+                        <div class="label">Wind:</div>
+                        <div class="value"></div>
+                    </div>
+                    <div class="detail" id="humidity">
+                        <div class="label">Humidity:</div>
+                        <div class="value"></div>
+                    </div>
+                    <div class="detail" id="sunrise">
+                        <div class="label">Sunrise:</div>
+                        <div class="value"></div>
+                    </div>
+                    <div class="detail" id="sunset">
+                        <div class="label">Sunset:</div>
+                        <div class="value"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="forecast">
+                <div class="title">4-day Forecast</div>
+                <div class="details">
+                    <div class="day">
+                        <div class="day-of-week"></div>
+                        <div class="date"></div>
+                        <div class="icon">
+                            <img src="" alt="">
+                        </div>
+                        <div class="high-low">
+                            <div class="high"><span>H: </span></div>
+                            <div class="low"><span>L: </span></div>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-of-week"></div>
+                        <div class="date"></div>
+                        <div class="icon">
+                            <img src="" alt="">
+                        </div>
+                        <div class="high-low">
+                            <div class="high"><span>H: </span></div>
+                            <div class="low"><span>L: </span></div>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-of-week"></div>
+                        <div class="date"></div>
+                        <div class="icon">
+                            <img src="" alt="">
+                        </div>
+                        <div class="high-low">
+                            <div class="high"><span>H: </span></div>
+                            <div class="low"><span>L: </span></div>
+                        </div>
+                    </div>
+                    <div class="day">
+                        <div class="day-of-week"></div>
+                        <div class="date"></div>
+                        <div class="icon">
+                            <img src="" alt="">
+                        </div>
+                        <div class="high-low">
+                            <div class="high"><span>H: </span></div>
+                            <div class="low"><span>L: </span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            David Lin 2022
+            <a href="https://github.com/lindavid1998/weather-api-demo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <path
+                    fill="white"
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+                </svg>
+            </a>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>

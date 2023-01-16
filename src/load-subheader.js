@@ -2,6 +2,15 @@ import { convertKelvin } from './conversions.js';
 import { API_KEY } from './index';
 import { loadSearchResult } from './load-search-result';
 
+import cloudMoon from './icons/cloud-moon.svg';
+import cloudRain from './icons/cloud-rain.svg';
+import cloudSnow from './icons/cloud-snow.svg';
+import cloudSun from './icons/cloud-sun.svg';
+import cloud from './icons/cloud.svg';
+import moonStars from './icons/moon-stars.svg';
+import other from './icons/other.svg';
+import sun from './icons/sun.svg';
+
 async function loadPopularCities() {
   // loads weather reports of popular cities to subheader
   let cities = ['San Diego', 'London', 'Taipei', 'New York'];
@@ -83,45 +92,45 @@ function loadWeatherIcon(img, id, time) {
   // updates src and alt attributes of img based on weather and time
 
   const icons = {
-    rain: 'cloud-rain',
-    snow: 'cloud-snow',
-    clouds: 'cloud',
+    rain: cloudRain,
+    snow: cloudSnow,
+    clouds: cloud,
   };
 
   let isNight = time.getUTCHours() > 17 && time.getUTCHours() < 24;
   let isEarlyMorning = time.getUTCHours() >= 0 && time.getUTCHours() < 6;
   if (isNight || isEarlyMorning) {
-    icons.clear = 'moon-stars';
-    icons.partlyClear = 'cloud-moon';
+    icons.clear = moonStars;
+    icons.partlyClear = cloudMoon;
   } else {
-    icons.clear = 'sun';
-    icons.partlyClear = 'cloud-sun';
+    icons.clear = sun;
+    icons.partlyClear = cloudSun;
   }
 
   id = String(id);
   switch (true) {
     case id == '800':
-      img.src = `../src/icons/${icons.clear}.svg`;
+      img.src = icons.clear;
       img.alt = 'Icon for clear conditions';
       break;
     case id == '801':
-      img.src = `../src/icons/${icons.partlyClear}.svg`;
+      img.src = icons.partlyClear;
       img.alt = 'Icon for partly clear conditions';
       break;
     case id.startsWith('2') || id.startsWith('3') || id.startsWith('5'):
-      img.src = `../src/icons/${icons.rain}.svg`;
+      img.src = icons.rain;
       img.alt = 'Icon for rainy conditions';
       break;
     case id.startsWith('6'):
-      img.src = `../src/icons/${icons.snow}.svg`;
+      img.src = icons.snow;
       img.alt = 'Icon for snowy conditions';
       break;
     case id.startsWith('80'):
-      img.src = `../src/icons/${icons.clouds}.svg`;
+      img.src = icons.clouds;
       img.alt = 'Icon for cloudy conditions';
       break;
     default:
-      img.src = `../src/icons/other.svg`;
+      img.src = other;
       img.alt = 'Icon for atmospheric condition';
   }
 }

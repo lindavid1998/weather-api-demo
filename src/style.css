@@ -62,8 +62,8 @@ textarea {
 
 button {
   padding: 5px 10px;
-  background-color: var(--background-color-dark);
-  border: 1px solid var(--border-color-gray);
+  background-color: #de4c4a;
+  border: none;
   border-radius: 5px;
   font-size: 0.9rem;
   position: absolute;
@@ -73,7 +73,7 @@ button {
 
 button:hover {
   cursor: pointer;
-  border: 1px solid var(--active-field);
+  background-color: #dc322f;
 }
 
 .search {

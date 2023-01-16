@@ -1,7 +1,9 @@
 # Weather-api-demo
 
 Project description: https://www.theodinproject.com/lessons/node-path-javascript-weather-app
+
 API used: https://openweathermap.org/
+
 See live demo here: https://lindavid1998.github.io/weather-api-demo/
 
 # Approach

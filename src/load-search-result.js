@@ -76,7 +76,7 @@ function loadSectionOne(data) {
 
   // load feels like
   const feelsLike = section.querySelector('.feels-like');
-  feelsLike.innerHTML = `Feels Like: ${convertKelvin(data.main.feels_like)}`;
+  feelsLike.innerHTML = `Feels Like ${convertKelvin(data.main.feels_like)}`;
 }
 
 function loadSectionTwo(highLows) {

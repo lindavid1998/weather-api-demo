@@ -2,9 +2,9 @@ import { useMetric } from './index';
 
 function convertKelvin(deg) {
   if (useMetric) {
-    return `${Math.round(deg - 273)}&#8451`; // to C
+    return `${Math.round(deg - 273)}&deg;C`; // to C
   } else {
-    return `${Math.round(((deg - 273.15) * 9) / 5 + 32)}&#8457`; // to F
+    return `${Math.round(((deg - 273.15) * 9) / 5 + 32)}&deg;F`; // to F
   }
 }
 

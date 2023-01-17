@@ -14,13 +14,16 @@ window.onload = () => {
 convertUnitBtn.addEventListener('click', () => {
   useMetric = !useMetric;
   if (useMetric) {
-    convertUnitBtn.innerHTML = `Units: &#8451`;
+    convertUnitBtn.innerHTML = `Units: &deg;C`;
   } else {
-    convertUnitBtn.innerHTML = `Units: &#8457`;
+    convertUnitBtn.innerHTML = `Units: &deg;F`;
   }
 
   loadPopularCities();
-  loadSearchResult(document.querySelector('.city-name').textContent);
+  if (document.querySelector('.city-name').textContent) {
+    loadSearchResult(document.querySelector('.city-name').textContent);
+  }
+
 });
 
 document.getElementById('search-icon').addEventListener('click', () => {
